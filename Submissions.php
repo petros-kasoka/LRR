@@ -248,7 +248,9 @@ where Lab_Report_ID=$id and lab_report_submissions.Status='Marked'  Order by lab
                                 $submitted_by = "<i>(GROUP)</i> Group X ";
                             }
 
-                            $full_link = "<a href='~\..\Lab_Report_Submisions\\$att1'>$att1</a>";
+                            $base_att1 = basename($att1);
+
+                            $full_link = "<a href='~\..\Download.php?file=$att1&attachment=1'>$base_att1</a>";  // prevent students from directly accessing their classmates' submissions
 
                             if ($att2 != "") {
                                 $full_link = $full_link . "| <a href='~\..\Lab_Report_Submisions\\$att2'>$att2</a>";
