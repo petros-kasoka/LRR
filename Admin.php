@@ -157,96 +157,16 @@ if ($_SESSION['user_type'] != "Lecturer") {
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#menua"> Course Portal </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#menub">Existing Courses</a>
+          <a class="nav-link active" data-toggle="tab" href="#menub">Existing Courses</a>
         </li>
 
       </ul>
 
       <!-- Tab panes -->
-      <div class="tab-content">
-        <div id="menua" class="container tab-pane active"><br>
-
-          <hr>
-          <b>Create new Portal </b>
-
-          <form method="post" action="Script.php">
-            <input type="hidden" name="frm_createCourse" value="true" required="" />
-            Course Name
-            <input type="text" name="name" placeholder="Course Name" class="form-control" required="">
-
-            Course Code
-            <input type="text" name="code" placeholder="Course Code" class="form-control" required="">
-
-            URL (Leave blank to use Course Name)
-            <input type="text" name="url" placeholder="Choose Custom URL " class="form-control" required="">
-
-            Academic Year
-            <input type="text" name="academic" placeholder="Academic Year" class="form-control" required="">
-
-            Faculty <br>
-            <input type="text" name="faculty" placeholder="Faculty" class="form-control" required="">
-
-            Assign Lecturer
-            <br>
-
-            <select name="lecturer" class="form-control">
-              <?php
-              $result = mysqli_query($con, "SELECT * FROM Users_Table WHERE UserType='Lecturer'");
-              if (mysqli_num_rows($result) == 0) {
-              } else {
-                while ($row = mysqli_fetch_assoc($result)) {
-                  $id = $row['User_ID'];
-                  $name = $row['Full_Name'];
-                  echo "<option value='$id'> $name </option>";
-                }
-              } ?>
-
-            </select>
-
-            Assigned T/A <br>
-            <select name="ta" class="form-control">
-              <?php
-              $result = mysqli_query($con, "SELECT * FROM Users_Table WHERE UserType='TA'");
-              if (mysqli_num_rows($result) == 0) {
-              } else {
-                while ($row = mysqli_fetch_assoc($result)) {
-                  $id = $row['User_ID'];
-                  $name = $row['Full_Name'];
-                  echo "<option value='$id'> $name </option>";
-                }
-              } ?>
-
-            </select>
-
-            Verify Joining Students
-            <input type="radio" name="verify" value="1"> Yes
-            <input type="radio" name="verify" value="0" checked=""> No
-
-            <br>
-            <input type="submit" class="btn btn-primary" value="Create Portal"><br>
-
-          </form>
-
-          <?php
-
-          error_reporting(E_ALL);
-          if (isset($_SESSION['info_Admin_Courses'])) {
-            echo  '<hr><div class="alert alert-info" role="alert">' . $_SESSION['info_Admin_Courses'] . '</div>';
-            $_SESSION['info_Admin_Courses'] = null;
-          }
-          if (isset($_SESSION['info_Admin_Courses'])) {
-            echo  '<hr><div class="alert alert-info" role="alert">' . $_SESSION['info_Admin_Courses'] . '</div>';
-            $_SESSION['info_Admin_Courses'] = null;
-          }
-
-          ?>
 
         </div>
 
-        <div id="menub" class="container tab-pane fade"><br>
+        <div id="menub" class="container tab-pane active"><br>
 
           <b> Existing Course Portals </b>
           <hr>
