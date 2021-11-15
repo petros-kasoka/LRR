@@ -1,6 +1,3 @@
-<?php
-include 'NoDirectPhpAcess.php';
-?>
 
 <?php
 
@@ -493,7 +490,7 @@ if ($_SESSION['user_type'] == "Student") {
             $student_id = $_SESSION['user_student_id'];
             if (!empty($_GET["search"]) || !empty($_GET["faculty"])) {
                 $search = trim($_GET["search"]);
-                $faculty = $_GET["faculty"];
+                $faculty = $_GET["faculty"]; 
 
                 if ($faculty == "") {
                     echo "<h4> Search Results for Course Code $search</h4><hr>";
